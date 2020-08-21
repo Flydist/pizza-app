@@ -24,7 +24,7 @@ const Cart = () => {
             <ShoppingCartTable />
           </Col>
           <Col xs={12}>
-            {orderTotal >= 400 ? <Contacts /> : <MinPay>Минимальная сумма заказа - 400 рублей</MinPay>}
+            {orderTotal >= 400 ? <Contacts /> : <MinPay>Минимальная сумма заказа - 400 рублей!</MinPay>}
 
           </Col>
         </>

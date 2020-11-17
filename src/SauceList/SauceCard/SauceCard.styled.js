@@ -30,8 +30,13 @@ export const AddButton = styled.button`
   margin: 10px 0 15px 0;
   border: none;
   padding: 2px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 
   :hover {
     opacity: .8;
+  }
+  :focus {
+    outline: none;
   }
 `

@@ -19,6 +19,7 @@ export const MakeOrder = styled.button`
   border-radius: 10px;
   border: none;
   opacity: 1;
+  transition: opacity 0.3s ease;
 
   ${props => props.disabled === true && css`
     opacity: .7;

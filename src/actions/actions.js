@@ -16,3 +16,10 @@ export const addReview = newReview => ({
   type: 'ADD_REVIEW',
   payload: newReview
 })
+export const fetchAllReviews = revs => ({
+  type: 'FETCH_ALL_REVIEWS',
+  payload: revs
+})
+export const resetCart = () => ({
+  type: 'RESET_CART'
+})

@@ -10,22 +10,22 @@ const FoodFilter = () => {
           <Row>
             <Col xs={6} sm={6} md={3}>
               <StyledNavLink to='/'>
-                <span>Пицца</span>
+                <p>Пицца</p>
               </StyledNavLink>
             </Col>
             <Col xs={6} sm={6} md={3}>
               <StyledNavLink to='drinks'>
-                <span>Напитки</span>
+                <p>Напитки</p>
               </StyledNavLink>
             </Col>
             <Col xs={6} sm={6} md={3}>
               <StyledNavLink to='desserts'>
-                <span>Десерты</span>
+                <p>Десерты</p>
               </StyledNavLink>
             </Col>
             <Col xs={6} sm={6} md={3}>
               <StyledNavLink to='reviews'>
-                <span>Отзывы</span>
+                <p>Отзывы</p>
               </StyledNavLink>
             </Col>
           </Row>

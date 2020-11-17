@@ -7,7 +7,7 @@ import ShoppingCartTable from '../ShoppingCartTable/ShoppingCartTable'
 import SauceList from '../SauceList/SauceList'
 import Contacts from '../Contacts/Contacts'
 
-const Cart = () => {
+const Cart = ({ isMadeOrder }) => {
   const orderTotal = useSelector(state => state.orderTotal)
   return (
     <Row>
@@ -24,7 +24,7 @@ const Cart = () => {
             <ShoppingCartTable />
           </Col>
           <Col xs={12}>
-            {orderTotal >= 400 ? <Contacts /> : <MinPay>Минимальная сумма заказа - 400 рублей!</MinPay>}
+            {orderTotal >= 400 ? <Contacts isMadeOrder={isMadeOrder} /> : <MinPay>Минимальная сумма заказа - 400 рублей!</MinPay>}
 
           </Col>
         </>

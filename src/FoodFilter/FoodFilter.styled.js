@@ -3,18 +3,24 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
 export const StyledNavLink = styled(NavLink)`
-  border-radius: 10px;
-  background-color: #d30d0d;
-  color: white;
 
   :hover {
     text-decoration: none;
-    color: white;
-    opacity: .8;
   }
 
-  span {
-    padding: 10px;
+  p {
+    border-radius: 10px;
+    background-color: #d30d0d;
+    color: white;
+    min-width: 80px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  p:hover {
+    text-decoration: none;
+    color: white;
+    opacity: .8;
   }
 
 `

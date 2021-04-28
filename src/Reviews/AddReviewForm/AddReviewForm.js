@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Block, StyledTextarea, StarsBlock, SendButton, AbsoluteContainer } from './AddReviewForm.styled'
 import { addReview } from '../../actions/actions'
-// import database from '../../firebase/firebase'
+import database from '../../firebase/firebase'
 
 const AddReviewForm = () => {
 
@@ -26,11 +26,11 @@ const AddReviewForm = () => {
   const onSendClick = () => {
     if (peopleName && text !== '') {
       dispatch(addReview({ peopleName, text, starsCount }))
-      // database.ref('reviews').push({
-      //   peopleName,
-      //   text,
-      //   starsCount
-      // })
+      database.ref('reviews').push({
+        peopleName,
+        text,
+        starsCount
+      })
       setPeopleName('')
       setText('')
       setStarsCount(5)

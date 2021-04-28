@@ -1,4 +1,4 @@
-export const formatOrder = (delivery, paytype, people, phone, address, comment, orderTotal, shoppingCart) => {
+export const formatOrder = (delivery, paytype, people, phone, address, comment, orderTotal, shoppingCart, status = 'new') => {
 
   const positionsMas = []
 
@@ -21,6 +21,7 @@ export const formatOrder = (delivery, paytype, people, phone, address, comment, 
     paytype,
     comment,
     positions: positionsToString,
-    orderTotal
+    orderTotal,
+    status
   }
 }

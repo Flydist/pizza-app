@@ -30,7 +30,19 @@ const reducer = (state, action) => {
       return {
         ...state,
         shoppingCart: [],
-        orderTotal: 0
+        orderTotal: 0,
+        discount: 0,
+      }
+    case 'SET_DISCOUNT_10':
+      return {
+        ...state,
+        orderTotal: state.orderTotal - state.orderTotal * 0.1,
+        discount: 0.1
+      }
+    case 'RESET_DISCOUNT':
+      return {
+        ...state,
+        discount: 0
       }
     default:
       return state
@@ -38,19 +50,20 @@ const reducer = (state, action) => {
 }
 
 const updateOrder = (state, itemId, quantity) => {
-  const { menu, shoppingCart, orderTotal } = state
+  const { menu, shoppingCart, orderTotal, discount } = state
 
   const menuItem = menu.find((item) => item.id === itemId);
   let itemIndex = shoppingCart.findIndex(({ id }) => id === itemId);
   const item = shoppingCart[itemIndex]
 
   const newItem = updateCartItem(menuItem, item, quantity);
-  const newOrderTotal = orderTotal + quantity * menuItem.price
+  const newOrderTotal = (orderTotal + quantity * (menuItem.price - menuItem.price * discount)) < 0 ? 0 : orderTotal + quantity * (menuItem.price - menuItem.price * discount)
 
   return {
     ...state,
     orderTotal: newOrderTotal,
-    shoppingCart: updateCartItems(shoppingCart, newItem, itemIndex)
+    shoppingCart: updateCartItems(shoppingCart, newItem, itemIndex),
+
   }
 }
 

@@ -40,3 +40,19 @@ export const Table = styled.div`
 
   }
 `
+
+export const PromocodeContainer = styled.div`
+  width:30%;
+  float:right;
+
+  @media screen and (max-width: 800px) {
+    width:50%;
+  }
+  @media screen and (max-width: 450px) {
+    width:70%;
+  }
+`
+
+export const DiscountSetBlock = styled.div`
+  text-align: right;
+`

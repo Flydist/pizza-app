@@ -23,3 +23,9 @@ export const fetchAllReviews = revs => ({
 export const resetCart = () => ({
   type: 'RESET_CART'
 })
+export const setDiscount10 = () => ({
+  type: 'SET_DISCOUNT_10'
+})
+export const resetDiscount = () => ({
+  type: 'RESET_DISCOUNT'
+})

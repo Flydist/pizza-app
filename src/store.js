@@ -2,7 +2,7 @@ import { createStore } from 'redux'
 import reducer from './reducer/reducer'
 import { loadState, saveState } from './localStorage'
 
-// const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__ / window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const persistedState = loadState()
 
@@ -165,15 +165,17 @@ const initialState = {
   ],
   shoppingCart: persistedState ? persistedState.shoppingCart : [],
   orderTotal: persistedState ? persistedState.orderTotal : 0,
-  reviews: []
+  reviews: [],
+  discount: persistedState ? persistedState.discount : 0
 }
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducer, initialState, reduxDevtools);
 
 store.subscribe(() => {
   const subscribedState = {
     shoppingCart: store.getState().shoppingCart,
     orderTotal: store.getState().orderTotal,
+    discount: store.getState().discount,
   }
   saveState(subscribedState)
 })

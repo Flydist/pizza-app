@@ -1,15 +1,46 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { InputGroup, FormControl, Button } from 'react-bootstrap'
+import { ButtonsBlock, YourCart, TotalPriceBlock, Table, PromocodeContainer, DiscountSetBlock } from './ShoppingCartTable.styled'
 
-import { ButtonsBlock, YourCart, TotalPriceBlock, Table } from './ShoppingCartTable.styled'
-
-import { addItem, minusItem, deleteItem } from '../actions/actions'
+import { addItem, minusItem, deleteItem, setDiscount10, } from '../actions/actions'
+import html2canvas from 'html2canvas'
+import { jsPDF } from "jspdf"
 
 const ShoppingCartTable = () => {
 
   const shoppingCart = useSelector(state => state.shoppingCart)
   const orderTotal = useSelector(state => state.orderTotal)
+  const discount = useSelector(state => state.discount)
   const dispatch = useDispatch()
+
+  const promoRef = React.createRef()
+
+  const setDiscount = (ref) => {
+    if (ref.current.value === "DISCOUNT10" && !discount) {
+      dispatch(setDiscount10())
+    }
+  }
+
+  const createPdf = () => {
+    const canvas = document.getElementById('divToPrint');
+    html2canvas(canvas, {
+      scale: 0.75,
+      width: window.screen.availWidth,
+      height: window.screen.availHeight,
+      windowWidth: 1100,
+      windowHeight: canvas.offsetHeight,
+      x: 0,
+      y: window.pageYOffset
+    })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'pt', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0);
+        pdf.save("download.pdf");
+      })
+      ;
+  }
 
   const renderRow = (item, idx) => {
     const { id, name, count, price } = item;
@@ -43,7 +74,7 @@ const ShoppingCartTable = () => {
   }
 
   return (
-    <React.Fragment>
+    <div id='divToPrint'>
       <YourCart>Ваша Корзина: </YourCart>
       <Table>
         <table className="table">
@@ -68,7 +99,26 @@ const ShoppingCartTable = () => {
       <TotalPriceBlock>
         <h4>Итого: {orderTotal} ₽</h4>
       </TotalPriceBlock>
-    </React.Fragment>
+
+      <PromocodeContainer>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Промокод"
+            aria-label="Промокод"
+            ref={promoRef}
+          />
+          <InputGroup.Append>
+            <Button variant="outline-danger" onClick={() => setDiscount(promoRef)}>Применить</Button>
+          </InputGroup.Append>
+        </InputGroup>
+        {discount !== 0 && <DiscountSetBlock>
+          Промокод применен
+      </DiscountSetBlock>}
+      </PromocodeContainer>
+      <Button variant="outline-danger" onClick={createPdf}>Выгрузить корзину в документ</Button>
+
+
+    </div>
   )
 }
 

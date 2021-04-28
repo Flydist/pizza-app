@@ -76,7 +76,7 @@ const Contacts = ({ isMadeOrder }) => {
   }
 
   const callBackendAPI = async (finalOrder) => {
-    const response = await fetch("https://www.yourapilink.com", {
+    const response = await fetch("https://pizza-app-delivery.tk/pizza", {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -111,8 +111,8 @@ const Contacts = ({ isMadeOrder }) => {
         dispatch(resetCart())
         history.push('/success')
       })
-      .catch((res) => {
-        console.log('Error: ', res)
+      .catch((err) => {
+        console.log(err)
         history.push('/err')
       })
   }

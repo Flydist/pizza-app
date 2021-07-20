@@ -1,6 +1,6 @@
 {
   "name": "pizza-app",
-  "homepage": "http://flydist.github.io/pizza-app",
+  "homepage": "https://flydist.github.io/pizza-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -26,7 +26,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "publish": "npm run build && npm run deploy"
   },
   "eslintConfig": {
     "extends": [

@@ -11,6 +11,7 @@ import { resetDiscount } from '../actions/actions'
 const Cart = ({ isMadeOrder }) => {
   const orderTotal = useSelector(state => state.orderTotal)
   const shoppingCart = useSelector(state => state.shoppingCart)
+  // const shoppingCart1 = useSelector(state => [state.shoppingCart])
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const Cart = ({ isMadeOrder }) => {
 
   return (
     <Row>
+      {console.log('render')}
       {orderTotal === 0 ?
         <Col xs={12}>
           <EmptyCart src='images/cart_empty.png' />

@@ -109,11 +109,12 @@ const ShoppingCartTable = () => {
           />
           <InputGroup.Append>
             <Button variant="outline-danger" onClick={() => setDiscount(promoRef)}>Применить</Button>
+            <Button variant="outline-danger" onClick={() => dispatch({ type: 'RESET_DISCOUNT' })}>RESET</Button>
           </InputGroup.Append>
         </InputGroup>
         {discount !== 0 && <DiscountSetBlock>
           Промокод применен
-      </DiscountSetBlock>}
+        </DiscountSetBlock>}
       </PromocodeContainer>
       <Button variant="outline-danger" onClick={createPdf}>Выгрузить корзину в документ</Button>
 

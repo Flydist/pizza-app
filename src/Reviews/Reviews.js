@@ -17,7 +17,7 @@ const Reviews = () => {
         snapshot.forEach((snap) => {
           temp.push(snap.val())
         })
-        dispatch(fetchAllReviews(temp))
+        dispatch(fetchAllReviews(temp.reverse()))
       })
   }, [dispatch])
 

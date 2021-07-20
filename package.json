@@ -1,6 +1,6 @@
 {
   "name": "pizza-app",
-  "homepage": "http://Flydist.github.io/pizza-app",
+  "homepage": "http://flydist.github.io/pizza-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
